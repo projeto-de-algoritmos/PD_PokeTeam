@@ -47,6 +47,7 @@ public class PokemonService {
     }
 
     public List<PokemonDTO> bestTeamPokemon(List<PokemonDTO> listPokemonDTO) {
+        List<PokemonDTO> bestTeamDTO = new ArrayList<>();
         Integer damage[] = new Integer[listPokemonDTO.size()];
         int i = 0;
         for (PokemonDTO dto : listPokemonDTO) {
@@ -59,9 +60,11 @@ public class PokemonService {
             health[j] = pokemonDTO.getHealth();
             j++;
         }
-        Integer time = 800;
-        // KnapSackUtil.knapSack(time, health, damage, listPokemonDTO.size());
-        System.out.println(KnapSackUtil.knapSack(time, health, damage, listPokemonDTO.size()));
-        return null;
+        Integer time = 2000;
+        int[] indexes = KnapSackUtil.knapSack(time, health, damage, 6);
+        for (int k = 0; k < indexes.length; k++) {
+            bestTeamDTO.add(listPokemonDTO.get(indexes[k]));
+        }
+        return bestTeamDTO;
     }
 }
