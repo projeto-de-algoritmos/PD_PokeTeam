@@ -1,26 +1,31 @@
 <form class="form mt-4" [formGroup]="pokemonForm" (ngSubmit)="find()" >
   <div class="row">
     <div class="column esquerda" style="text-align: center; width: 30%">
-      <div class="center">
-        <div class="row"> matrix:  </div>
-        <div class="row"> Pokemons:  </div>
+      <div class="center fixed-left">
+        <div class="row" > Select Pokemons that can be used:</div>
+        <div class="row" style="margin-bottom: 30px"> (Min: 6)</div>
+        <div class="row" style="margin-bottom: 30px">
+          <button (click)="selectAll()" type="button" mat-flat-button color="accent" > Select All </button>
+          <button (click)="unselectAll()" type="button" mat-flat-button color="accent" style="margin-left: 10px"> Unselect All </button>
+
+        </div>
+        <button type="submit" mat-flat-button color="primary">
+          Go!
+        </button>
       </div>
     </div>
-    <div class="column centro" style="width: 38%">
-      <mat-grid-list cols="15" rowHeight="1:1" gutterSize="2px">
-        <div *ngFor="let i of matrix | async">
-          <mat-grid-tile>
-            <div *ngIf="i != null">
-              <img [src]="i.url" style="max-width:98%; max-height:98%; margin-bottom: 0px">
+    <div class="centro" style="width: 73%">
+      <mat-grid-list cols="10" rowHeight="1:1" gutterSize="10px">
+        <div *ngFor="let i of list" >
+          <mat-grid-tile [ngClass]="i.selected ? 'tile' : ''">
+            <div *ngIf="i != null" >
+              <button class="button" type="button" (click)="setSelected(i)">
+                <img [src]="i.url" style="max-width:100%; max-height:100%;">
+              </button>
             </div>
           </mat-grid-tile>
         </div>
       </mat-grid-list>
-    </div>
-    <div class="column direita" style="width: 30%">
-      <button type="submit" class="center" mat-flat-button color="primary">
-        Go!
-      </button>
     </div>
   </div>
 </form>

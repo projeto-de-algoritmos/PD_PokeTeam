@@ -13,11 +13,11 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  cartesianPlane(): Observable<Pokemons[]> {
-    return this.http.get<Pokemons[]>(`${API}/cartesianPlane`);
+  listPokemons(): Observable<Pokemons[]> {
+    return this.http.get<Pokemons[]>(`${API}/listAll`);
   }
 
-  closestPokemon(): Observable<ResponseDTO> {
-    return this.http.get<ResponseDTO>(`${API}/closestPokemon`);
+  bestTeam(pokemons: Array<Pokemons>): Observable<ResponseDTO> {
+    return this.http.post<ResponseDTO>(`${API}/bestTeam`, pokemons);
   }
 }

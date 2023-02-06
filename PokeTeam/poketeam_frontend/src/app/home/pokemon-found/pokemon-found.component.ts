@@ -24,6 +24,6 @@ export class PokemonFoundComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.resposta.resposta)
+    console.log(this.resposta)
   }
 }

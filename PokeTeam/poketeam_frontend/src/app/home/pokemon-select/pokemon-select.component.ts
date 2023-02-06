@@ -16,18 +16,12 @@ import {Observable} from "rxjs";
 })
 export class PokemonSelectComponent implements OnInit {
 
-  matrix: Observable<Pokemons[]> | undefined;
-  optionsPokemon: any[] = [];
-  optionsAreas: any[] = [];
+  list: Pokemons[] | undefined;
   imageAlt: any;
   imageSourceSelf: any;
-  imageArea: any;
   pokemon: any = null;
-  area: any = null;
-
   pokemonForm = this.formBuilder.group({
     pokemon: '',
-    area: '',
   });
 
   constructor(
@@ -39,7 +33,7 @@ export class PokemonSelectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.matrix = this.pokemonService.cartesianPlane();
+    this.pokemonService.listPokemons().forEach((pokemon)=> this.list = pokemon);
   }
 
   openDialogError(): void {
@@ -55,7 +49,7 @@ export class PokemonSelectComponent implements OnInit {
 
   openDialog(response: any): void {
     const dialogRef = this.dialog.open(PokemonFoundComponent, {
-      width: '500px',
+      width: '700px',
       height: '500px',
       data: response,
     });
@@ -65,40 +59,39 @@ export class PokemonSelectComponent implements OnInit {
     });
   }
 
-  extractPokemon(pokemon: Pokemons) {
-    return {
-      id: pokemon.id,
-      name: pokemon.name,
-      url: pokemon.url
-    };
-  }
-
-  loadPokemonSelf($event: MatSelectChange) {
-    if($event.value !== null){
-      this.imageSourceSelf = $event.value.url
-      this.pokemon = $event.value.id
-    } else {
-      this.pokemon = $event.value
-    }
-  }
-
-  loadArea($event: MatSelectChange) {
-    if($event.value !== null){
-      this.imageArea = $event.value.url
-      this.area = $event.value.id
-    } else {
-      this.area = $event.value
-    }
-  }
-
   find() {
-    this.pokemonService.closestPokemon().subscribe((response: any) => {
-      console.log(response)
+    let selectedList: Array<Pokemons> = []
+
+    console.log(this.list);
+
+    this.list?.forEach((pokemon) => {
+        if (pokemon.selected){
+          selectedList.push(pokemon);
+        }
+    })
+
+
+    this.pokemonService.bestTeam(selectedList).subscribe((response: any) => {
       this.openDialog(response);
       }, (error: any) => {
-      console.log(error)
       this.openDialogError();
       }
     );
+  }
+
+  setSelected(pokemon: Pokemons) {
+    pokemon.selected = !pokemon.selected
+  }
+
+  selectAll() {
+    this.list?.forEach((pokemon) => {
+      pokemon.selected = true;
+    })
+  }
+
+  unselectAll() {
+    this.list?.forEach((pokemon) => {
+      pokemon.selected = false;
+    })
   }
 }
