@@ -3,6 +3,7 @@ package br.com.poketeam.controller;
 import br.com.poketeam.dto.PokemonDTO;
 import br.com.poketeam.exception.EmptyListPokemonException;
 import br.com.poketeam.service.PokemonService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class PokemonController {
         }
     }
 
-    @PostMapping(path = "/bestTeam")
+    @PostMapping(path = "/bestTeam", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> bestTeam(@RequestBody List<PokemonDTO> listPokemonDTO){
         try {
             return ResponseEntity.ok(service.bestTeamPokemon(listPokemonDTO));

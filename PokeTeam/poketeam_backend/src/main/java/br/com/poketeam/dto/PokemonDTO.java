@@ -12,6 +12,8 @@ public class PokemonDTO {
     private String url;
     private Integer damage;
     private Integer health;
+    private boolean selected;
+
 
     public PokemonDTO(Pokemon pokemon){
         this.id = pokemon.getId();
@@ -19,6 +21,8 @@ public class PokemonDTO {
         this.url = pokemon.getUrl();
         this.damage = pokemon.getDamage();
         this.health = pokemon.getHealth();
+        this.selected = pokemon.getSelected();
+
     }
 }
 

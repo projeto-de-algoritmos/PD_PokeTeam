@@ -22,4 +22,5 @@ public class Pokemon {
     private String name;
     private Integer damage;
     private Integer health;
+    private Boolean selected;
 }
