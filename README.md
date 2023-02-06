@@ -10,22 +10,21 @@
 | 18/0145363 |  Yan Andrade de Sena  |
 
 ## Sobre 
-O objetivo do PokeTeam é apresentar uma interface direta e simples de utilizar, que tem a função de mostrar a menor distância entre dois pokémons. Para isso é utilizado o algoritmo de menor distância entre dois pontos. 
+O objetivo do PokeTeam é apresentar uma interface direta e simples de utilizar, que tem a função de escolher e mostrar para o usuário o melhor time entre as opções selecionadas.
 
 ## Screenshots
 
 ### Pagina inicial (Sem Seleção)
 
-![Itens não selecionados](assets-readme/pokefind-notselected.png) 
+![Pokemons não selecionados](assets-readme/pokemons-nao-selecionados.png) 
 
-### Pagina inicial (Area e Pokemon Selecionados)
+### Pagina inicial (Pokemon Selecionados)
 
-![Pokemons selecionados](assets-readme/pokefind-selected.png) 
+![Pokemons selecionados](assets-readme/pokemons-selecionados.png) 
 
-### Modal de caminho
+### Modal de melhor time
 
-![Modal Caminho Inicio](assets-readme/pokefind-modal-1.png) 
-![Modal Caminho Final](assets-readme/pokefind-modal-2.png) 
+![Modal Caminho Inicio](assets-readme/melhor-time.png) 
 
 ## Instalação 
 **Linguagem**: Java, Typescript<br>
@@ -60,7 +59,7 @@ http://localhost:4200
 ```
 
 ## Uso 
-Para a utilizaçao devemos selecionar dois pokémons e em seguida apertar o botão: ``"Go!"``.
+Para a utilizaçao devemos selecionar os pokémons que podem ser usados para a seleção e em seguida apertar o botão: ``"Go!"``.
 
 ## Outros 
 
