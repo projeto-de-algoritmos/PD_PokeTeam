@@ -65,5 +65,5 @@ Para a utilizaçao devemos selecionar os pokémons que podem ser usados para a s
 
 ### Download Apresentação
 
-Segue o Link para download da [Apresentação do projeto](assets-readme/apresentacao-pokegraph.mp4).<br>
+Segue o Link para download da [Apresentação do projeto](assets-readme/entrega-poketeam.mp4).<br>
 (Para download, clique no link e depois nas opções *Download* ou *View Raw*)
